@@ -13,7 +13,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@/components/ui/popover";
+} from "@/components/ui/ui/popover";
 
 export const ConnectWalletButton = () => {
   const [account, setAccount] = useState<string | undefined>();
