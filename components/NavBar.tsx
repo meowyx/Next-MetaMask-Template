@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 
-import WalletIcon from "../../public/icons/WalletIcon";
+import WalletIcon from "../public/icons/WalletIcon";
 
 import { Button } from "./ui/button";
 
 import { useState } from "react";
 import { useSDK, MetaMaskProvider } from "@metamask/sdk-react";
-import { formatAddress } from "../../lib/utils";
+import { formatAddress } from "../lib/utils";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@/components/ui/ui/popover";
+} from "@/components/ui/popover";
 
 export const ConnectWalletButton = () => {
   const [account, setAccount] = useState<string | undefined>();
