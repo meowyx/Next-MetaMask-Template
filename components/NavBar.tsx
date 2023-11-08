@@ -6,7 +6,6 @@ import WalletIcon from "../public/icons/WalletIcon";
 
 import { Button } from "./ui/button";
 
-import { useState } from "react";
 import { useSDK, MetaMaskProvider } from "@metamask/sdk-react";
 import { formatAddress } from "../lib/utils";
 import {
@@ -16,14 +15,11 @@ import {
 } from "@/components/ui/popover";
 
 export const ConnectWalletButton = () => {
-  const [account, setAccount] = useState<string | undefined>();
-
-  const { sdk, connected, connecting } = useSDK();
+  const { sdk, connected, connecting, account } = useSDK();
 
   const connect = async () => {
     try {
-      const metaMaskAccount = (await sdk?.connect()) as string[];
-      setAccount(metaMaskAccount[0]);
+      await sdk?.connect();
     } catch (err) {
       console.warn(`No accounts found`, err);
     }
@@ -32,7 +28,6 @@ export const ConnectWalletButton = () => {
   const disconnect = () => {
     if (sdk) {
       sdk.terminate();
-      setAccount(undefined); // Optionally reset the account state
     }
   };
 
